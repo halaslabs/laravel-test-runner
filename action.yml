@@ -21,6 +21,7 @@ runs:
           php-version: ${{ inputs.php-version }}
       - run: |
           php -i
-          composer install
+          php -m
+          composer install --no-progress --prefer-dist --optimize-autoloader
           php artisan test
         shell: bash

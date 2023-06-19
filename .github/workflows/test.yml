@@ -17,10 +17,7 @@ jobs:
           -v "$(pwd)":/laravel \
           -w /laravel \
           composer:latest \
-          bash -c "composer create-project laravel/laravel action-test"
-          ls -al
-          ls -al action-test
+          bash -c "composer create-project laravel/laravel ."
       - run: |
           ls -al
-          ls -al action-test
       - uses: ./
