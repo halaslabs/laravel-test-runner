@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Test Default
     steps:
-      - run: |
+      - uses: actions/checkout@v3
+      - name: Install laravel/laravel
+        run: |
           docker run --rm \
           --pull=always \
           -v "$(pwd)":/laravel \
@@ -18,7 +20,6 @@ jobs:
           bash -c "composer create-project laravel/laravel action-test"
           ls -al
           ls -al action-test
-      - uses: actions/checkout@v3
       - run: |
           ls -al
           ls -al action-test
