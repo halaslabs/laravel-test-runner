@@ -19,9 +19,7 @@ jobs:
           composer:latest \
           bash -c "composer create-project laravel/laravel laravel"
       - run: |
-          ls -al
           sudo chown -R runner:docker laravel
           cp -a laravel/. .
           rm -rf laravel
-          ls -al
       - uses: ./
