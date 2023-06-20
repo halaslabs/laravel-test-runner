@@ -19,9 +19,21 @@ runs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ inputs.php-version }}
-      - run: |
-          php -i
-          php -m
+      - name: Install Dependencies
+        run: |
           composer install --no-progress --prefer-dist --optimize-autoloader
+        shell: bash
+
+      - name: Prepare
+        run: |
+          echo "::group::PHP Modules"
+          php -m
+          echo "::endgroup::"
+          php -r "file_exists('.env') || copy('.env.example', '.env');"
+          php artisan key:generate
+        shell: bash
+
+      - name: Test Run
+        run: |
           php artisan test
         shell: bash
