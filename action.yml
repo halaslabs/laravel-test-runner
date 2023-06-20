@@ -35,5 +35,6 @@ runs:
 
       - name: Test Run
         run: |
-          php artisan test
+          php artisan test --without-tty | tee test_results
+          cat test_results >> $GITHUB_STEP_SUMMARY
         shell: bash
