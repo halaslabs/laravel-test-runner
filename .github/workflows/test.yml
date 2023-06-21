@@ -1,0 +1,25 @@
+name: 'Action Test'
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test Default
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install laravel/laravel
+        run: |
+          docker run --rm \
+          --pull=always \
+          -v "$(pwd)":/laravel \
+          -w /laravel \
+          composer:latest \
+          bash -c "composer create-project laravel/laravel laravel"
+      - run: |
+          sudo chown -R runner:docker laravel
+          cp -a laravel/. .
+          rm -rf laravel
+      - uses: ./
