@@ -22,6 +22,7 @@ runs:
       - run: |
           echo '${{ inputs.setup }}'
           exit 1
+        shell: bash
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
