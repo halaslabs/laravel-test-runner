@@ -1,6 +1,6 @@
 name: Laravel Test Runner
 author: halaslabs
-description: "This action will run your Laravel application\'s test suite."
+description: "This action will run your Laravel application's test suite."
 
 branding:
   color: 'purple'
