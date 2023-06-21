@@ -21,13 +21,12 @@ runs:
   steps:
       - run: |
           echo '${{ inputs.setup }}'
-          exit 1
         shell: bash
-      - name: Setup PHP
+      - if: inputs.setup == 'true'
+        name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ inputs.php-version }}
-        if: ${{ inputs.setup == 'true' }}
 
       - name: Install Dependencies
         run: |
