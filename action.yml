@@ -12,16 +12,13 @@ inputs:
     required: false
     default: '8.2'
   setup:
-    description: 'If false, setup-php will not be run and must be done prior to running this action'
+    description: 'If false, setup-php will not be run'
     required: false
     default: 'true'
 
 runs:
   using: composite
   steps:
-      - run: |
-          echo '${{ inputs.setup }}'
-        shell: bash
       - if: inputs.setup == 'true'
         name: Setup PHP
         uses: shivammathur/setup-php@v2

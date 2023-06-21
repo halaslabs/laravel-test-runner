@@ -39,5 +39,11 @@ A demo of the action can be seen here: https://github.com/halaslabs/laravel-test
   with:
     # Version of php to install for running the test suite.
     # For supported versions, see: https://github.com/shivammathur/setup-php#tada-php-support
+    # default: 8.2
     php-version: '8.2'
+
+    # If true, we run https://github.com/shivammathur/setup-php prior to running your laravel tests
+    # If false, you are in charge of setting php as needed for your application.
+    # default: true
+    setup: 'true'
 ```
