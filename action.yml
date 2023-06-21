@@ -19,11 +19,15 @@ inputs:
 runs:
   using: composite
   steps:
+      - run: |
+          echo '${{ inputs.setup }}'
+          exit 1
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ inputs.php-version }}
         if: ${{ inputs.setup == 'true' }}
+
       - name: Install Dependencies
         run: |
           composer install --no-progress --prefer-dist --optimize-autoloader
