@@ -14,7 +14,7 @@ inputs:
   setup:
     description: 'If false, setup-php will not be run and must be done prior to running this action'
     required: false
-    default: "true"
+    default: 'true'
 
 runs:
   using: composite
@@ -23,7 +23,7 @@ runs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ inputs.php-version }}
-        if: ${{ inputs.setup == "true" }}
+        if: ${{ inputs.setup == 'true' }}
       - name: Install Dependencies
         run: |
           composer install --no-progress --prefer-dist --optimize-autoloader
